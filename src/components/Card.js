@@ -13,7 +13,7 @@ const Back = (props) => (
   <div onClick={props.handleClick} className="ui card">
     <img src="/placeholder.png" alt="placeholder" className="ui image" />
     <div className="content">
-      <div className="header">Card Number: {props.card.id} BACK!</div>
+      <div className="header">BACK!</div>
     </div>
   </div>
 ); 
@@ -33,10 +33,16 @@ class Card extends Component {
     this.setState(prevState => ({ isFlipped: !prevState.isFlipped }));
   }
 
-  render() {
+  renderCard = () => {
     const card = this.props.card; 
+    return (this.state.isFlipped) ? <Front key="front" handleClick={this.handleClick} card={card} /> : <Back key="back" handleClick={this.handleClick} card={card} />;   
+  }
+
+  render() {
     return (
-       <Front key="front" handleClick={this.handleClick} card={card} />   
+      <div className="ui card">
+        {this.renderCard()}
+      </div>
     );
   }
 }

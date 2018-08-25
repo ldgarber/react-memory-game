@@ -8,7 +8,6 @@ class App extends Component {
       size: 10, 
       cards: [], 
     }
-    this.seedCards = this.seedCards.bind(this); 
   }
 
   randColor = () => {
@@ -16,15 +15,38 @@ class App extends Component {
     return color; 
   }
 
-  seedCards() {
+  shuffle = (array) => {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }
+
+
+
+  seedCards = () => {
     for (var i=0; i<this.state.size; i++) {
       var cards = this.state.cards; 
       var color = this.randColor; 
       var card = {color: color, id: i} 
       cards.push(card); 
       cards.push(card); 
-      this.setState(cards: cards) 
     }
+    cards = this.shuffle(cards)
+    this.setState(cards: cards) 
+
   }
 
   componentWillMount(){
