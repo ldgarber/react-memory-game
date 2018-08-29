@@ -4,7 +4,7 @@ const Front = (props) => (
   <div onClick={props.handleClick} className="ui card">
     <img src="/placeholder.png" alt="placeholder" className="ui image" />
     <div className="content">
-      <div className="header">Card Number: {props.card.id}</div>
+      <div className="header">Card Number: {props.card.value}</div>
     </div>
   </div>
 ); 
@@ -25,17 +25,21 @@ class Card extends Component {
     this.state = {
       isFlipped: false,  
     }
-    this.handleClick = this.handleClick.bind(this); 
   }
 
-  handleClick(e) {
+  handleClick = (e) => {
     e.preventDefault(); 
-    this.setState(prevState => ({ isFlipped: !prevState.isFlipped }));
+    this.props.onClick(); 
+  }
+
+  handleFrontClick = (e) => {
+    e.preventDefault(); 
+    alert("Already flipped!") 
   }
 
   renderCard = () => {
     const card = this.props.card; 
-    return (this.state.isFlipped) ? <Front key="front" handleClick={this.handleClick} card={card} /> : <Back key="back" handleClick={this.handleClick} card={card} />;   
+    return (card.flipped) ? <Front key="front" handleClick={this.handleFrontClick} card={card} /> : <Back key="back" handleClick={this.handleClick} card={card} />;   
   }
 
   render() {

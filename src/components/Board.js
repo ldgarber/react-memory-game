@@ -5,9 +5,24 @@ class Board extends Component {
   constructor(props) {
     super(props); 
     this.state = {
-      size: 10, 
+      size: 20, 
       cards: [], 
+      flipped: 0, 
     }
+  }
+
+  handleCardClick = (index) => {
+    var cards = this.state.cards; 
+    var newCard = cards[index]; 
+    //toggle 'flipped' = false is back showing
+    newCard.flipped = !newCard.flipped; 
+    cards[index] = newCard; 
+    this.setState({
+      flipped: this.state.flipped + 1, 
+      cards: cards
+    }) 
+
+    console.log(this.state)
   }
 
   randColor = () => {
@@ -37,12 +52,13 @@ class Board extends Component {
 
 
   seedCards = () => {
-    for (var i=0; i<this.state.size; i++) {
+    for (var i=0; i<this.state.size; i+=2) {
       var cards = this.state.cards; 
       var color = this.randColor; 
-      var card = {color: color, id: i} 
+      var card = {color: color, id: i,  value: i, flipped: false} 
+      var cardDupe = {color: color, id: i+1, value: i, flipped: false }
       cards.push(card); 
-      cards.push(card); 
+      cards.push(cardDupe); 
     }
     cards = this.shuffle(cards)
     this.setState(cards: cards) 
@@ -65,7 +81,7 @@ class Board extends Component {
 
   renderCards() {
     return this.state.cards.map( (card, index) => {
-      return <Card key={index} card={card} /> 
+      return <Card key={index} card={card} onClick={this.handleCardClick.bind(this, index)} /> 
     })
   }
 }
