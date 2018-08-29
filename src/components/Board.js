@@ -112,7 +112,7 @@ class Board extends Component {
   render() {
     return (
       <div className="ui container">
-        <div className="ui five doubling stackable cards">
+        <div className="ui seven doubling stackable cards">
           {this.renderCards()}
         </div>
       </div>

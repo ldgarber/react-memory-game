@@ -1,0 +1,9 @@
+.main {
+  background-image: linear-gradient(to bottom right, #6dd5fa, #ffffff); 
+}
+
+.spacer-row {
+  height: 50px; 
+  width: auto; 
+  display: block; 
+}
