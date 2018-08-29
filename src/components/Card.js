@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 
+//save for later
+const bkbcImage = <img src="/bkbc.png" alt="bkbc" className="ui image" />
+const placeholderImage = <img src="/placeholder.png" alt="bkbc" className="ui image" />
+
 const Front = (props) => (
   <div onClick={props.handleClick} className="ui card">
-    <img src="/placeholder.png" alt="placeholder" className="ui image" />
+    {placeholderImage}
     <div className="content" style={{backgroundColor: props.card.color}}>
       <div className="header">Card Number: {props.card.value}</div>
     </div>
@@ -11,9 +15,9 @@ const Front = (props) => (
 
 const Back = (props) => (
   <div onClick={props.handleClick} className="ui card" >
-    <img src="/placeholder.png" alt="placeholder" className="ui image" />
+    {bkbcImage}
     <div className="content" >
-      <div className="header">BACK! </div>
+      <div className="header">BKBC Memory!</div>
     </div>
   </div>
 ); 

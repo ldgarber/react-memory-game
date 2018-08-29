@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
 import Header from "./components/Header";  
-import Board from "./components/Board"; 
+import Game from "./components/Game"; 
 
 class App extends Component {
-  constructor(props) {
-    super(props); 
-    this.state = {
-    }
-  }
-
   render() {
     return (
       <div>
         <Header />
-        <Board />
+        <Game />
       </div>
     );
   }

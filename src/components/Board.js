@@ -1,14 +1,25 @@
 import React, { Component } from 'react';
 import Card from "./Card"; 
+import { SIZE} from "../constants"; 
 
 class Board extends Component {
   constructor(props) {
     super(props); 
     this.state = {
-      size: 20, 
+      size: SIZE, 
       cards: [], 
-      flipped: [], 
+      flipped: [] 
     }
+  }
+
+  componentDidUpdate() {
+    if (this.gameOver() ){
+      console.log("game over")
+    } 
+  }
+
+  gameOver = () => {
+    return this.state.cards.every(card => card.flipped === true ); 
   }
 
   handleCardClick = (index) => {
@@ -19,13 +30,39 @@ class Board extends Component {
     //toggle 'flipped' = false is back showing
     newCard.flipped = !newCard.flipped; 
     cards[index] = newCard; 
-    flipped << newCard; 
+    flipped.push(newCard); 
     this.setState({
       cards: cards, 
       flipped: flipped
     }) 
    
+    if ((flipped.length === 2) && !this.gameOver() ) {
+      setTimeout(this.checkForMatches, 200)
+    }
    console.log(this.state)
+  }
+
+  checkForMatches = () => {
+    var flipped = this.state.flipped; 
+    var cards = this.state.cards; 
+
+    if (flipped[0].value === flipped[1].value) {
+      this.setState({flipped: []}) 
+      alert("Found a match!"); 
+    } else {
+      //unflip card 1
+      var id1 = flipped[0].id
+      var card1 = cards.find(card => card.id === id1)
+      card1.flipped = !card1.flipped; 
+
+      //unflip card 2
+      var id2 = flipped[1].id
+      var card2 = cards.find(card => card.id === id2)
+      card2.flipped = !card2.flipped;  
+
+      this.setState({ cards: cards, flipped: []})
+      alert("No match!"); 
+    }
   }
 
   randColor = () => {
