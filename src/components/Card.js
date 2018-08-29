@@ -3,17 +3,17 @@ import React, { Component } from "react";
 const Front = (props) => (
   <div onClick={props.handleClick} className="ui card">
     <img src="/placeholder.png" alt="placeholder" className="ui image" />
-    <div className="content">
+    <div className="content" style={{backgroundColor: props.card.color}}>
       <div className="header">Card Number: {props.card.value}</div>
     </div>
   </div>
 ); 
 
 const Back = (props) => (
-  <div onClick={props.handleClick} className="ui card">
+  <div onClick={props.handleClick} className="ui card" >
     <img src="/placeholder.png" alt="placeholder" className="ui image" />
-    <div className="content">
-      <div className="header">BACK!</div>
+    <div className="content" >
+      <div className="header">BACK! </div>
     </div>
   </div>
 ); 
