@@ -29,15 +29,25 @@ class Game extends Component {
   render() {
     const ActiveBoard = this.state.board; 
     return (
-      <div className="ui grid">
-        <div className="centered row"><button className="ui button centered" onClick={this.newGame}>New game?</button></div>
-        <div className="row">
-          <div className="two wide column"/>
-          <div className="twelve wide column"><ActiveBoard /></div>
-          <div className="two wide column"/>
+      <div>
+        <div className="ui menu"> 
+          <a className="item">Memory Game</a>
+          <div className="right menu">
+            <div className="item">
+              <button className="ui button" onClick={this.newGame}>New game?</button>
+            </div>
+          </div>
+        </div>  
+
+        <div className="ui grid">
+          <div className="row">
+            <div className="two wide column"/>
+            <div className="twelve wide column"><ActiveBoard /></div>
+            <div className="two wide column"/>
+          </div>
+          <div className="spacer-row"></div>
+          <Footer />
         </div>
-        <div className="spacer-row"></div>
-        <Footer />
       </div>
     ) 
   }
