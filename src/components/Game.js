@@ -12,8 +12,14 @@ class Game extends Component {
     super(props); 
     this.state = {
       won: false,  
-      board: ()=><Board />
+      turns: 0, 
+      board: ()=><Board incrementTurns={this.incrementTurns} />
     }
+  }
+
+  incrementTurns = () => {
+    var turns = this.state.turns; 
+    this.setState({ turns: turns + 1 })
   }
 
   handleWin = () => {
@@ -33,6 +39,9 @@ class Game extends Component {
         <div className="ui menu"> 
           <a className="item">Memory Game</a>
           <div className="right menu">
+            <div className="item">
+              <h2>Turns: {this.state.turns}</h2>
+            </div>
             <div className="item">
               <button className="ui button" onClick={this.newGame}>New game?</button>
             </div>

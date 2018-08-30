@@ -63,6 +63,7 @@ class Board extends Component {
       this.setState({ cards: cards, flipped: []})
       alert("No match!"); 
     }
+    this.props.incrementTurns(); 
   }
 
   randColor = () => {
@@ -89,8 +90,6 @@ class Board extends Component {
     return array;
   }
 
-
-
   seedCards = () => {
     for (var i=0; i<this.state.size; i+=2) {
       var cards = this.state.cards; 
@@ -102,7 +101,6 @@ class Board extends Component {
     }
     cards = this.shuffle(cards)
     this.setState(cards: cards) 
-
   }
 
   componentWillMount(){
