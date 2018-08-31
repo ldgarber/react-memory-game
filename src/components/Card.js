@@ -8,7 +8,7 @@ const Front = (props) => (
   <div onClick={props.handleClick} className="ui card">
     {placeholderImage}
     <div className="content" style={{backgroundColor: props.card.color}}>
-      <div className="header">Card Number: {props.card.value}</div>
+      <div className="header">Card: {props.card.value}</div>
     </div>
   </div>
 ); 
@@ -41,17 +41,11 @@ class Card extends Component {
     alert("Already flipped!") 
   }
 
-  renderCard = () => {
-    const card = this.props.card; 
-    return (card.flipped) ? <Front key="front" handleClick={this.handleFrontClick} card={card} /> : <Back key="back" handleClick={this.handleClick} card={card} />;   
-  }
-
   render() {
-    return (
-      <div className="ui card">
-        {this.renderCard()}
-      </div>
-    );
+    const card = this.props.card; 
+
+    return (card.flipped) ? <Front key="front" handleClick={this.handleFrontClick} card={card} /> : <Back key="back" handleClick={this.handleClick} card={card} />;   
+     
   }
 }
 
