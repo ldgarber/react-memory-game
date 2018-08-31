@@ -7,3 +7,7 @@
   width: auto; 
   display: block; 
 }
+
+img.ui.image.transparent {
+  opacity: 0.3; 
+}

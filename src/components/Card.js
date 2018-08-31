@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import bkbc from '../images/bkbc.png'; 
+import placeholder from '../images/placeholder.png'; 
 
 //save for later
 const bkbcImage = <img src={bkbc} alt="bkbc" className="ui image" />
-const placeholderImage = <img src="/placeholder.png" alt="bkbc" className="ui image" />
+const placeholderImage = <img src={placeholder} alt="placeholder" className="ui image transparent" />
 
 const Front = (props) => (
-  <div onClick={props.handleClick} className="ui card">
+  <div onClick={props.handleClick} className="ui card" style={{backgroundColor: props.card.color}}>
+    {placeholderImage}
     <div className="content" style={{backgroundColor: props.card.color}}>
       <div className="header">Card: {props.card.value}</div>
     </div>
