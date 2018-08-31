@@ -37,6 +37,8 @@ class Game extends Component {
 
   newGame = () => {
     this.setState({
+      won: false,  
+      turns: 0, 
       board: ()=><Board incrementTurns={this.incrementTurns} onWin={this.handleWin}/>
     })
   }

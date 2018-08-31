@@ -2,7 +2,9 @@
   "name": "memory-game",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ldgarber.github.io/react-memory-game", 
   "dependencies": {
+    "gh-pages": "^1.2.0",
     "react": "^16.4.2",
     "react-card-flip": "^0.2.1",
     "react-confetti": "^2.3.0",
@@ -14,7 +16,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test -env=jsdom",
+    "eject": "react-scripts eject", 
+    "predeploy": "npm run build", 
+    "deploy": "gh-pages -d build"
   }
 }
