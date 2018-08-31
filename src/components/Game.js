@@ -1,5 +1,14 @@
 import React, { Component } from "react"; 
 import Board from "./Board"; 
+import Confetti from "react-dom-confetti"; 
+
+const confettiConfig = {
+  angle: 90, 
+  spread: 227, 
+  startVelocity: 9, 
+  elementCount: 200, 
+  decay: 1
+}
 
 const Footer = () => (
   <div className="footer centered row">
@@ -13,7 +22,7 @@ class Game extends Component {
     this.state = {
       won: false,  
       turns: 0, 
-      board: ()=><Board incrementTurns={this.incrementTurns} />
+      board: ()=><Board incrementTurns={this.incrementTurns} onWin={this.handleWin}/>
     }
   }
 
@@ -23,7 +32,7 @@ class Game extends Component {
   }
 
   handleWin = () => {
-    alert("you won!")
+    console.log("game over!! you win!"); 
   }
 
   newGame = () => {

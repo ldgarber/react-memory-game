@@ -14,7 +14,7 @@ class Board extends Component {
 
   componentDidUpdate() {
     if (this.gameOver() ){
-      console.log("game over")
+      this.props.onWin(); 
     } 
   }
 
@@ -39,7 +39,6 @@ class Board extends Component {
     if ((flipped.length === 2) && !this.gameOver() ) {
       setTimeout(this.checkForMatches, 200)
     }
-   console.log(this.state)
   }
 
   checkForMatches = () => {
