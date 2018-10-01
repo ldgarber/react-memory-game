@@ -66,6 +66,7 @@ class Game extends Component {
             <div className="two wide column"/>
           </div>
           <div className="spacer-row"></div>
+
           <Footer />
         </div>
       </div>

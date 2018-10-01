@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Card from "./Card"; 
 import { SIZE} from "../constants"; 
+import { Alert } from 'react-alert'; 
 
 class Board extends Component {
   constructor(props) {
